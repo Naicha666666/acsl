@@ -1,0 +1,16 @@
+#include <iostream>
+#include<algorithm>
+using namespace std;
+void setIO(string s) {
+    freopen((s + ".in").c_str(), "r", stdin);
+    freopen((s + ".out").c_str(), "w", stdout);
+}
+int main() {
+    setIO("teleport");
+    int a, b, x, y;
+    cin >> a >> b >> x >> y;
+    int dist = abs(a - b);
+    int mina = min(abs(a - x), abs(a - y));
+    int minb = min(abs(b - x), abs(b - y));
+    cout << min(dist, mina + minb) << endl;
+}
