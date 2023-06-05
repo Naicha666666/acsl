@@ -1,0 +1,14 @@
+#include <iostream>
+#include<algorithm>
+using namespace std;
+int main() {
+    int a, b, c;
+    cin >> a >> b >> c;
+    int n = b - (a*c*(c+1)/2);
+    if (n >= 0){
+        cout << 0;
+    }
+    else{
+        cout << -n;
+    }
+}
