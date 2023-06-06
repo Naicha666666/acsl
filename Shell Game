@@ -1,0 +1,22 @@
+#include <iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+int n;
+int a, b, g;
+int position[4];
+int points[4];
+int main() {
+    freopen("shell.in", "r", stdin);
+    freopen("shell.out", "w", stdout);
+    position[1] = 1;
+    position[2] = 2;
+    position[3] = 3;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> a >> b >> g;
+        swap(position[a], position[b]);
+        points[position[g]]++;
+    }
+    cout << max({points[1], points[2], points[3]}) << "\n";
+}
