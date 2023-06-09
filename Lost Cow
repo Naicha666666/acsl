@@ -1,0 +1,47 @@
+#include <iostream>
+#include<cmath>
+#include<algorithm>
+using namespace std;
+int main(){
+     freopen("lostcow.in", "r", stdin);
+     freopen("lostcow.out", "w", stdout);
+    int x, y, d, n, cnt;
+    cnt = 0;
+    d = 0;
+    n = 0;
+    cin >> x >> y;
+    d = abs(y-x);
+    if (y > x){
+        for (int i = 0; i < 11; i++){
+            if (d <= pow(2, i)){
+                if (i % 2 == 0){
+                    n = i;
+                }
+                else{
+                    n = i+1;
+                }
+                break;
+            }
+        }
+        for (int i = 0; i < n; i++){
+            cnt += pow(2, i)*2;
+        }
+        cout << cnt+d;
+    }else{
+        for (int i = 0; i < 11; i++){
+            if (d <= pow(2, i)){
+                if (i % 2 == 1){
+                    n = i;
+                }
+                else{
+                    n = i+1;
+                }
+                break;
+            }
+        }
+        for (int i = 0; i < n; i++){
+            cnt += pow(2, i)*2;
+        }
+        cout << cnt+d;
+    }
+}
