@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+
+#define all(c) begin(c),end(c)
+#define RANGE 1000
+
+typedef long long ll;
+typedef unsigned long long ull;
+
+using namespace std;
+
+void solve(int n){
+    int min_range=0;
+    int max_range=RANGE;
+    int on_road=0,off_road=0;
+    int c1,c2;
+    string place;
+
+    while(n--){
+        cin>>place;
+        cin>>c1>>c2;
+        if(place=="on"){
+            on_road=max(on_road,max(c1,c2));
+        }else if(place=="off"){
+            off_road=max(off_road,max(c1,c2));
+        }else{
+            min_range=max(min_range,c1);
+            max_range=min(max_range,c2);
+        }
+    }
+
+    cout<<min_range-on_road<<" "<<max_range-on_road<<"\n";
+    cout<<min_range-off_road<<" "<<max_range-off_road+on_road<<"\n";
+}
+
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int n;
+    cin>>n;
+    solve(n);
+    return 0;
+}
