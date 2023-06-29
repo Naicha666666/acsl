@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+#include <numeric>
+#include <cmath>
+using namespace std;
+using ll = long long;
+using ull = unsigned long long;
+
+struct Rect {
+    ll x1, y1, x2, y2;
+    ll area() { return abs(y2 - y1) * abs(x2 - x1); }
+};
+
+ll intersect(Rect a, Rect b) {
+    ll x = max(0LL, min(a.x2, b.x2) - max(a.x1, b.x1));
+    ll y = max(0LL, min(a.y2, b.y2) - max(a.y1, b.y1));
+    return x * y;
+}
+ll intersectthree(Rect a, Rect b, Rect c){
+    ll x = max((ll)0, min(a.x2, min(b.x2, c.x2)) - max(a.x1, max(b.x1, c.x1)));
+    ll y = max((ll)0, min(a.y2, min(b.y2, c.y2)) - max(a.y1, max(b.y1, c.y1)));
+    return x * y;
+}
+int main(){
+    ll x1, y1, x2, y2;
+    cin >> x1 >> y1 >> x2 >> y2;
+    Rect a = {x1, y1, x2, y2};
+    cin >> x1 >> y1 >> x2 >> y2;
+    Rect b = {x1, y1, x2, y2};
+    cin >> x1 >> y1 >> x2 >> y2;
+    Rect c = {x1, y1, x2, y2};
+    ll ans = a.area();
+    ans -= intersect(a, b);
+    ans -= intersect(c, a);
+    ans += intersectthree(a, b, c);
+    if (ans) cout << "YES\n";
+    else cout << "NO\n";
+    return 0;
+}
